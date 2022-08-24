@@ -10,14 +10,19 @@ public class GebruikerService {
 	@Autowired
 	GebruikerRepository g;
 	
-	public void ietsOpslaan() {
-		g.save(new Gebruiker());
+	public Iterable<Gebruiker> giveAllUsers(){
+		return g.findAll();
+	}
+
+	public void saveUser(Gebruiker gebruiker) {
+		g.save(gebruiker);
+		
+	}
+
+	public void deleteUser(long gebruikerid) {
+		// TODO Auto-generated method stub
+		g.deleteById(gebruikerid);
 	}
 	
-	public void saveNewUser(String newUser) {
-		Gebruiker user1 = new Gebruiker();
-		user1.setName(newUser);
-		g.save(user1);
-	}
 
 }

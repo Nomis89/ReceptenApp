@@ -18,7 +18,7 @@ public class Gebruiker {
 	private String cityName;
 	private String streetName;
 	private int houseNumber;
-	private char houseNumberAddition;
+	private String houseNumberAddition;
 	private String zipCode;
 	public long getId() {
 		return id;
@@ -56,10 +56,10 @@ public class Gebruiker {
 	public void setHouseNumber(int houseNumber) {
 		this.houseNumber = houseNumber;
 	}
-	public char getHouseNumberAddition() {
+	public String getHouseNumberAddition() {
 		return houseNumberAddition;
 	}
-	public void setHouseNumberAddition(char houseNumberAddition) {
+	public void setHouseNumberAddition(String houseNumberAddition) {
 		this.houseNumberAddition = houseNumberAddition;
 	}
 	public String getZipCode() {
