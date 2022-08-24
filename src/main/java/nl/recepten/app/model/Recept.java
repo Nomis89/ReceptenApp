@@ -1,7 +1,5 @@
 package nl.recepten.app.model;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,56 +12,48 @@ public class Recept {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "receptnaam")
-	private String naam;
-	private String omschrijving;
-	private String ingredienten;	
-	private int voorbereidingsTijd;
-	private int bereidingsTijd;
-	private LocalDateTime aanmaakDatum;
+	@Column(name = "recipename")
+	private String name;
+	private String instructions;
+	private int cookingTime;
+	private int totalPortions;
+	private boolean vegitarian;
+
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getNaam() {
-		return naam;
+	public String getName() {
+		return name;
 	}
-	public void setNaam(String naam) {
-		this.naam = naam;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getOmschrijving() {
-		return omschrijving;
+	public String getInstructions() {
+		return instructions;
 	}
-	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
 	}
-	public String getIngredienten() {
-		return ingredienten;
+	public int getCookingTime() {
+		return cookingTime;
 	}
-	public void setIngredienten(String ingredienten) {
-		this.ingredienten = ingredienten;
+	public void setCookingTime(int cookingTime) {
+		this.cookingTime = cookingTime;
 	}
-	public int getVoorbereidingsTijd() {
-		return voorbereidingsTijd;
+	public int getTotalPortions() {
+		return totalPortions;
 	}
-	public void setVoorbereidingsTijd(int voorbereidingsTijd) {
-		this.voorbereidingsTijd = voorbereidingsTijd;
+	public void setTotalPortions(int totalPortions) {
+		this.totalPortions = totalPortions;
 	}
-	public int getBereidingsTijd() {
-		return bereidingsTijd;
+	public boolean isVegitarian() {
+		return vegitarian;
 	}
-	public void setBereidingsTijd(int bereidingsTijd) {
-		this.bereidingsTijd = bereidingsTijd;
+	public void setVegitarian(boolean vegitarian) {
+		this.vegitarian = vegitarian;
 	}
-	public LocalDateTime getAanmaakTijdstip() {
-		return aanmaakDatum;
-	}
-	public void setAanmaakTijdstip(LocalDateTime aanmaakTijdstip) {
-		this.aanmaakDatum = aanmaakTijdstip;
-	}
-	
-	
-	
 }
