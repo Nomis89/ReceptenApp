@@ -1,10 +1,14 @@
 package nl.recepten.app.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 @Entity
 public class Recept {
@@ -18,6 +22,9 @@ public class Recept {
 	private int cookingTime;
 	private int totalPortions;
 	private boolean vegitarian;
+	
+	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recept")
+	private List<RecipeIngredient> ingredients;
 
 	
 	public long getId() {
