@@ -3,9 +3,9 @@ package nl.recepten.app.persistence;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import nl.recepten.app.model.Gebruiker;
+import nl.recepten.app.model.User;
 
 @Component
-public interface GebruikerRepository extends CrudRepository<Gebruiker, Long>{
+public interface UserRepository extends CrudRepository<User, Long>{
 
 }
