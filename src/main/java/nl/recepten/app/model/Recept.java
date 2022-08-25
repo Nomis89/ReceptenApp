@@ -17,7 +17,7 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
-	private boolean vegitarian;
+	private boolean vegetarian;
 
 	
 	public long getId() {
@@ -50,10 +50,10 @@ public class Recept {
 	public void setTotalPortions(int totalPortions) {
 		this.totalPortions = totalPortions;
 	}
-	public boolean isVegitarian() {
-		return vegitarian;
+	public boolean isvegetarian() {
+		return vegetarian;
 	}
-	public void setVegitarian(boolean vegitarian) {
-		this.vegitarian = vegitarian;
+	public void setvegetarian(boolean vegetarian) {
+		this.vegetarian = vegetarian;
 	}
 }
