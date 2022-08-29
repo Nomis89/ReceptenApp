@@ -21,7 +21,6 @@ public class GebruikerEndpoint {
 	public Iterable<Gebruiker> allUsers() {
 		System.out.println("it works");
 		return gs.giveAllUsers();
-		
 	}
 	
 	@PostMapping("adduser")
@@ -29,6 +28,7 @@ public class GebruikerEndpoint {
 		System.out.println(gebruiker.getName());
 		gs.saveUser(gebruiker);
 	}
+	
 	@DeleteMapping("deleteuser/{gebruikerid}")
 	public void deleteUser(@PathVariable("gebruikerid") int gebruikerid){
 		gs.deleteUser(gebruikerid);

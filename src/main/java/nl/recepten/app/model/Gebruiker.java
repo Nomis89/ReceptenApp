@@ -20,6 +20,7 @@ public class Gebruiker {
 	private int houseNumber;
 	private String houseNumberAddition;
 	private String zipCode;
+	
 	public long getId() {
 		return id;
 	}
