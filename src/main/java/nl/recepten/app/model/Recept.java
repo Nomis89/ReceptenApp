@@ -21,12 +21,12 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
+
 	private boolean vegitarian;
 	
 	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recept")
 	private List<RecipeIngredient> ingredients;
 
-	
 	public long getId() {
 		return id;
 	}
@@ -57,10 +57,10 @@ public class Recept {
 	public void setTotalPortions(int totalPortions) {
 		this.totalPortions = totalPortions;
 	}
-	public boolean isVegitarian() {
+	public boolean isvegitarian() {
 		return vegitarian;
 	}
-	public void setVegitarian(boolean vegitarian) {
+	public void setvegitarian(boolean vegitarian) {
 		this.vegitarian = vegitarian;
 	}
 }
