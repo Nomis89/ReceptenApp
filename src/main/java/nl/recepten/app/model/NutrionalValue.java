@@ -12,7 +12,7 @@ public class NutrionalValue {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@OneToMany(mappedBy="Ingredient")
+	//@OneToMany(mappedBy="Ingredient")
 	private int calories;
 	private double fat;
 	private double carbs;

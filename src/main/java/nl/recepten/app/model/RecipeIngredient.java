@@ -16,8 +16,9 @@ public class RecipeIngredient {
 	@ManyToOne(optional = false)
 	private Recept recipe;
 	
-	@ManyToOne(optional = false)
-	private Ingredient ingredient;
+	// COMMENT: Dit in plaats van een verwijzing naar ingredient entiteit. 
+	// Niet echt een duidelijke relatie met de andere tabellen.
+	private long ingredientID;
 	
 	private double amount;
 	private QuantityType amountType;
@@ -28,12 +29,14 @@ public class RecipeIngredient {
 	public void setRecipe(Recept recipe) {
 		this.recipe = recipe;
 	}
-	public Ingredient getIngredient() {
-		return ingredient;
-	}
-	public void setIngredient(Ingredient ingredient) {
-		this.ingredient = ingredient;
-	}
+	// COMMENT: Staan uit omdat ze ingredient gebruiken.
+	// Nieuwe getters en setters moeten gemaakt worden als de long als oplossing blijft bestaan.
+//	public Ingredient getIngredient() {
+//		return ingredient;
+//	}
+//	public void setIngredient(Ingredient ingredient) {
+//		this.ingredient = ingredient;
+//	}
 	public double getAmount() {
 		return amount;
 	}
