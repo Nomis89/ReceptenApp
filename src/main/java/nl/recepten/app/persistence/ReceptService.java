@@ -14,4 +14,18 @@ public class ReceptService {
 		rr.save(new Recept());
 	}
 	
+	public void PushRecipeTestData() {
+		Recept recipe1 = new Recept();
+		recipe1.setName("Pasta pesto");
+		recipe1.setInstructions("Kook de pasta volgens de instructies op de verpakking. "
+				+ "Voeg de pesto toe aan de pasta en meng deze.");
+		recipe1.setCookingTime(20);
+		recipe1.setTotalPortions(4);
+		recipe1.setvegitarian(true);
+		
+		
+		
+		
+	}
+	
 }

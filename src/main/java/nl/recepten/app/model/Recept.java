@@ -24,7 +24,7 @@ public class Recept {
 
 	private boolean vegitarian;
 	
-	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recept")
+	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recipe")
 	private List<RecipeIngredient> ingredients;
 
 	public long getId() {
