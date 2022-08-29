@@ -3,18 +3,18 @@ package nl.recepten.app.persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import nl.recepten.app.model.Gebruiker;
+import nl.recepten.app.model.User;
 
 @Service
-public class GebruikerService {
+public class UserService {
 	@Autowired
-	GebruikerRepository g;
+	UserRepository g;
 	
-	public Iterable<Gebruiker> giveAllUsers(){
+	public Iterable<User> giveAllUsers(){
 		return g.findAll();
 	}
 
-	public void saveUser(Gebruiker gebruiker) {
+	public void saveUser(User gebruiker) {
 		g.save(gebruiker);
 		
 	}

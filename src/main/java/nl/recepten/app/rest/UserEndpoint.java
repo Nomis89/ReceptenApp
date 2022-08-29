@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import nl.recepten.app.model.Gebruiker;
-import nl.recepten.app.persistence.GebruikerService;
+import nl.recepten.app.model.User;
+import nl.recepten.app.persistence.UserService;
 
 @RestController
-public class GebruikerEndpoint {
+public class UserEndpoint {
 		
 	@Autowired
-		GebruikerService gs;
+		UserService gs;
 	
 	@GetMapping("/test1")
-	public Iterable<Gebruiker> allUsers() {
+	public Iterable<User> allUsers() {
 		System.out.println("it works");
 		return gs.giveAllUsers();
 	}
 	
 	@PostMapping("adduser")
-	public void addUser(@RequestBody Gebruiker gebruiker) {
+	public void addUser(@RequestBody User gebruiker) {
 		System.out.println(gebruiker.getName());
 		gs.saveUser(gebruiker);
 	}

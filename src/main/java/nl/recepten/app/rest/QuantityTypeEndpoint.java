@@ -11,7 +11,6 @@ import nl.recepten.app.model.QuantityType;
 @RestController
 public class QuantityTypeEndpoint {
 
-	
 	@GetMapping("/returnQuantityTypes")
 	public QuantityType[] returnQuantityTypes() {
 		System.out.println("returnQuantityTypes");
