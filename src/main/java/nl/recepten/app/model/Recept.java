@@ -21,7 +21,14 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
+	private KitchenAppliance kitchenAppliance;
 
+	public KitchenAppliance getKitchenAppliance() {
+		return kitchenAppliance;
+	}
+	public void setKitchenAppliance(KitchenAppliance kitchenAppliance) {
+		this.kitchenAppliance = kitchenAppliance;
+	}
 	private boolean vegitarian;
 	
 	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recipe")
