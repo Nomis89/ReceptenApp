@@ -96,8 +96,14 @@ public class ReceptService {
 		recipelist2.add(recipeIngredient4);
 		recipe1.setIngredients(recipelist2);
 		
-		
-		
+	}
+	
+	public Iterable<Recept> findAllRecipes() {
+		return rr.findAll();
+	}
+
+	public void addRecipe(Recept recept) {
+		rr.save(recept);
 		
 	}
 	
