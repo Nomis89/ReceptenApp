@@ -24,6 +24,15 @@ public class ReceptService {
 		recipe1.setvegitarian(true);
 		
 		
+		Recept recipe2 = new Recept();
+		recipe2.setName("Cracker met kaas");
+		recipe2.setInstructions("Haal de cracker uit de verpakking. "
+				+ "Snij twee plakjes kaas en leg deze op de cracker");
+		recipe2.setCookingTime(5);
+		recipe2.setTotalPortions(1);
+		recipe2.setvegitarian(true);
+		
+		
 		
 		
 	}
