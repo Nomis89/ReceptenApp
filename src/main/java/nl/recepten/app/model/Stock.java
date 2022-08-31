@@ -20,6 +20,18 @@ public class Stock {
 	@ManyToOne
 	private User user;
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Ingredient getIngredientName() {
+		return ingredientName;
+	}
+	public void setIngredientName(Ingredient ingredientName) {
+		this.ingredientName = ingredientName;
+	}
 	@ManyToOne
 	private Ingredient ingredientName;
 	

@@ -31,6 +31,12 @@ public class Recept {
 	@ManyToOne(optional = true)
 	private User user;
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@ElementCollection(targetClass = KitchenAppliance.class)
 	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
 	@Column(name = "KitchenAppliance", nullable = true)

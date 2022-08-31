@@ -30,6 +30,12 @@ public class User {
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "user")
 	private List<Recept> recepten;
 	
+	public List<Recept> getRecepten() {
+		return recepten;
+	}
+	public void setRecepten(List<Recept> recepten) {
+		this.recepten = recepten;
+	}
 	public long getId() {
 		return id;
 	}
