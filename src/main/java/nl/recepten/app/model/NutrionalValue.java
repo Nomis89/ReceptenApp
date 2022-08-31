@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,7 +14,8 @@ public class NutrionalValue {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	//@OneToMany(mappedBy="Ingredient")
+	@ManyToOne
+	private Ingredient ingredient;
 	private int calories;
 	private double fat;
 	private double carbs;
