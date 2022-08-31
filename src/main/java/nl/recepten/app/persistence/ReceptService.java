@@ -25,8 +25,13 @@ public class ReceptService {
 		
 	}
 	
-	public Iterable<Recept> getAllRecipes() {
+	public Iterable<Recept> findAllRecipes() {
 		return rr.findAll();
+	}
+
+	public void addRecipe(Recept recept) {
+		rr.save(recept);
+		
 	}
 	
 }

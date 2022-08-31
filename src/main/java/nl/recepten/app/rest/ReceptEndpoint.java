@@ -15,14 +15,14 @@ public class ReceptEndpoint {
 	@Autowired
 	ReceptService rs;
 	
-	@GetMapping("pushRecipe")
-	public Iterable<Recept> addRecipe () {
-		return rs.getAllRecipes();
+	@GetMapping("findAllRecipes")
+	public Iterable<Recept> findAllRecipes() {
+		return rs.findAllRecipes();
 	}
 	
 	@PostMapping("addRecipe")
 	public void addRecipe(@RequestBody Recept recept) {
-		System.out.println("Check 1,2,3");
+		rs.addRecipe(recept);
 	}
 	
 }
