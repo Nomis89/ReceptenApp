@@ -1,15 +1,18 @@
 package nl.recepten.app.persistence;
 
+import java.sql.Date;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import nl.recepten.app.model.Account;
 import nl.recepten.app.model.Ingredient;
 import nl.recepten.app.model.KitchenAppliance;
 import nl.recepten.app.model.QuantityType;
 import nl.recepten.app.model.Recept;
 import nl.recepten.app.model.RecipeIngredient;
+import nl.recepten.app.model.Stock;
+import nl.recepten.app.model.User;
 
 
 @Service
@@ -24,7 +27,19 @@ public class TestDataService {
 	@Autowired
 	RecipeIngredientRepository rir;
 	
-	public Recept pushPastaPesto() {
+	@Autowired
+	UserRepository ur;
+	
+	@Autowired
+	AccountRepository ar;
+	
+	@Autowired
+	StockRepository sr;
+	
+	@Autowired
+	IngredientService is;
+	
+	public Recept pushPastaPesto(User user) {
 		Ingredient ingredient1 = new Ingredient();
 		Ingredient ingredient2 = new Ingredient();
 		
@@ -35,11 +50,9 @@ public class TestDataService {
 		ArrayList<RecipeIngredient> recipelist = new ArrayList<RecipeIngredient>();
 		ArrayList<KitchenAppliance> kitchenappliances= new ArrayList<KitchenAppliance>();
 		
-		ingredient1.setName("Pasta");
-		ingredient1 = ir.save(ingredient1);
+		ingredient1 = is.checkExistenceOrCreate("Pasta");
 		
-		ingredient2.setName("Pesto");
-		ingredient2 = ir.save(ingredient2);
+		ingredient2 = is.checkExistenceOrCreate("Pesto");
 //		System.out.println("ingredienten gemaakt");
 		
 		recipeIngredient1.setIngredient(ingredient1);
@@ -68,6 +81,7 @@ public class TestDataService {
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
 		recipe.setKitchenAppliance(kitchenappliances);
+		recipe.setUser(user);
 		
 		recipe = rr.save(recipe);
 		
@@ -77,7 +91,7 @@ public class TestDataService {
 		return recipe;
 	}
 	
-	public Recept pushCrackerMetKaas() {
+	public Recept pushCrackerMetKaas(User user) {
 		
 		Ingredient ingredient1 = new Ingredient();
 		Ingredient ingredient2 = new Ingredient();
@@ -88,11 +102,9 @@ public class TestDataService {
 		Recept recipe = new Recept();
 		ArrayList<RecipeIngredient> recipelist = new ArrayList<RecipeIngredient>();
 		
-		ingredient1.setName("Cracker");
-		ingredient1 = ir.save(ingredient1);
+		ingredient1 = is.checkExistenceOrCreate("Kracker");
 		
-		ingredient2.setName("Kaas");
-		ingredient2 = ir.save(ingredient2);
+		ingredient2 = is.checkExistenceOrCreate("Kaas");
 //		System.out.println("ingredienten gemaakt");
 
 		recipeIngredient1.setIngredient(ingredient1);
@@ -116,6 +128,7 @@ public class TestDataService {
 		recipe.setTotalPortions(1);
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
+		recipe.setUser(user);
 		
 		recipe = rr.save(recipe);
 		
@@ -125,7 +138,76 @@ public class TestDataService {
 		return recipe;
 	}
 	
-	public void createRecipeHevainUser() {
+	public User createRecipeHavingUser() {
+		User user = new User();
+		Account account = new Account();
+		Stock stock = new Stock();
+		Ingredient ingredient = new Ingredient();
 		
+		user.setName("Jan Jansma");
+		user.setDescription("Ik ben een legit persoon.");
+		user.setCityName("Verwegistan");
+		user.setStreetName("Hoofdstraat");
+		user.setHouseNumber(1);
+		user.setHouseNumberAddition("a");
+		user.setZipCode("1111AA");
+		
+		account.setUser(user);
+		account.setPassWord("wachtwoord123");
+		account.setUserName("Jan123");
+		account.setEmail("jan@jansen.nl");
+		
+		ingredient = is.checkExistenceOrCreate("Kracker");
+		
+		stock.setAmount(2);
+		stock.setAmountType(QuantityType.STUK);
+		stock.setAvailableToOthers(true);
+		stock.setExpirationDate(new Date(56446556));
+		stock.setUser(user);
+		stock.setIngredientName(ingredient);
+		
+		System.out.println("test1");
+		
+		
+		ur.save(user);
+		ar.save(account);
+		sr.save(stock);
+		return user;
+	}
+	
+	public User createStockHavingUser() {
+		User user = new User();
+		Account account = new Account();
+		Stock stock = new Stock();
+		Ingredient ingredient = new Ingredient();
+		
+		user.setName("Sjon het Schaap");
+		user.setDescription("Ik ben een legit schaap.");
+		user.setCityName("Verweghiervan");
+		user.setStreetName("Hoofdstraat");
+		user.setHouseNumber(2);
+		user.setHouseNumberAddition("b");
+		user.setZipCode("2222BB");
+		
+		account.setUser(user);
+		account.setPassWord("wachtwoord123");
+		account.setUserName("Sjon123");
+		account.setEmail("Sjon@schaap.nl");
+		
+		ingredient = is.checkExistenceOrCreate("Kaas");
+		
+		stock.setAmount(2);
+		stock.setAmountType(QuantityType.SNEE);
+		stock.setAvailableToOthers(false);
+		stock.setExpirationDate(new Date(56446556));
+		stock.setUser(user);
+		stock.setIngredientName(ingredient);
+		
+		System.out.println("test1");
+		
+		ur.save(user);
+		ar.save(account);
+		sr.save(stock);
+		return user;
 	}
 }
