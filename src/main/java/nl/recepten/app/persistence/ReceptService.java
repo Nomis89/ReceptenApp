@@ -23,9 +23,10 @@ public class ReceptService {
 		recipe1.setTotalPortions(4);
 		recipe1.setvegitarian(true);
 		
-		
-		
-		
+	}
+	
+	public Iterable<Recept> getAllRecipes() {
+		return rr.findAll();
 	}
 	
 }
