@@ -24,7 +24,7 @@ public class TestDataService {
 	@Autowired
 	RecipeIngredientRepository rir;
 	
-	public void pushPastaPesto() {
+	public Recept pushPastaPesto() {
 		Ingredient ingredient1 = new Ingredient();
 		Ingredient ingredient2 = new Ingredient();
 		
@@ -74,9 +74,10 @@ public class TestDataService {
 		recipeIngredient1 = rir.save(recipeIngredient1);
 		recipeIngredient2 = rir.save(recipeIngredient2);
 //		System.out.println("recept gemaakt");
+		return recipe;
 	}
 	
-	public void pushCrackerMetKaas() {
+	public Recept pushCrackerMetKaas() {
 		
 		Ingredient ingredient1 = new Ingredient();
 		Ingredient ingredient2 = new Ingredient();
@@ -121,5 +122,10 @@ public class TestDataService {
 		recipeIngredient1 = rir.save(recipeIngredient1);
 		recipeIngredient2 = rir.save(recipeIngredient2);
 //		System.out.println("recept gemaakt");
+		return recipe;
+	}
+	
+	public void createRecipeHevainUser() {
+		
 	}
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Entity;
@@ -26,6 +27,9 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
+	
+	@ManyToOne(optional = true)
+	private User user;
 	
 	@ElementCollection(targetClass = KitchenAppliance.class)
 	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
