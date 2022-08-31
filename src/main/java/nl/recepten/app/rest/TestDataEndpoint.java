@@ -5,16 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.persistence.ReceptService;
+import nl.recepten.app.persistence.TestDataService;
 
 @RestController
 public class TestDataEndpoint {
 
 	@Autowired
-	ReceptService rs;
+	TestDataService tds;
 	
 	@GetMapping("PushTestData")
 	public void PushTestData() {
-		rs.pushPastaPesto();
-		rs.pushCrackerMetKaas();
+		tds.pushPastaPesto();
+		tds.pushCrackerMetKaas();
 	}
 }
