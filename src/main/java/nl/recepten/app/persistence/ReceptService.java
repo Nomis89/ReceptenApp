@@ -33,5 +33,9 @@ public class ReceptService {
 		rr.save(recept);
 		
 	}
+
+	public void deleteRecipe(long receptid) {
+		 rr.deleteById(receptid);
+	}
 	
 }
