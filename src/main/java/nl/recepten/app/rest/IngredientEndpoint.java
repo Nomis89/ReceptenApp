@@ -22,7 +22,7 @@ public class IngredientEndpoint {
 			return is.giveAllIngredients();
 		}
 		
-		@GetMapping("/{id}")
+		@GetMapping("getIngredient/{id}")
 		public Ingredient getIngredientById(@PathVariable("id")long id) {
 			System.out.println("Hij doet het W");
 			int x;
