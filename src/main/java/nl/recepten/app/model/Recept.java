@@ -21,12 +21,12 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
-	private KitchenAppliance kitchenAppliance;
+	private List<KitchenAppliance> kitchenAppliance;
 
-	public KitchenAppliance getKitchenAppliance() {
+	public List<KitchenAppliance> getKitchenAppliance() {
 		return kitchenAppliance;
 	}
-	public void setKitchenAppliance(KitchenAppliance kitchenAppliance) {
+	public void setKitchenAppliance(List<KitchenAppliance> kitchenAppliance) {
 		this.kitchenAppliance = kitchenAppliance;
 	}
 	private boolean vegitarian;
@@ -39,6 +39,12 @@ public class Recept {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public List<RecipeIngredient> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<RecipeIngredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 	public String getName() {
 		return name;
