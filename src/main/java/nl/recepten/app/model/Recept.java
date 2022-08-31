@@ -29,7 +29,7 @@ public class Recept {
 	
 	@ElementCollection(targetClass = KitchenAppliance.class)
 	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "KitchenAppliance", nullable = false)
+	@Column(name = "KitchenAppliance", nullable = true)
 	@Enumerated(EnumType.STRING)
 	private List<KitchenAppliance> kitchenAppliance;
 

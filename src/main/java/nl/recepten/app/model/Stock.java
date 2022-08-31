@@ -27,6 +27,7 @@ public class Stock {
 	private QuantityType amountType; 
 	private Date expirationDate; 
 	private Boolean availableToOthers;
+	
 	public long getId() {
 		return id;
 	}
@@ -57,7 +58,4 @@ public class Stock {
 	public void setAvailableToOthers(Boolean availableToOthers) {
 		this.availableToOthers = availableToOthers;
 	} 
-	
-	
-	
 }
