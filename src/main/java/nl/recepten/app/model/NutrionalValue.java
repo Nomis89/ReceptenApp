@@ -18,7 +18,6 @@ public class NutrionalValue {
 	private double carbs;
 	private double protien;
 	private double fiber;
-	
 
 	public long getId() {
 		return id;
