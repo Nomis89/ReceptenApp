@@ -21,12 +21,12 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
-	private List<KitchenAppliance> kitchenAppliance;
+	private KitchenAppliance kitchenAppliance;
 
-	public List<KitchenAppliance> getKitchenAppliance() {
+	public KitchenAppliance getKitchenAppliance() {
 		return kitchenAppliance;
 	}
-	public void setKitchenAppliance(List<KitchenAppliance> kitchenAppliance) {
+	public void setKitchenAppliance(KitchenAppliance kitchenAppliance) {
 		this.kitchenAppliance = kitchenAppliance;
 	}
 	private boolean vegitarian;

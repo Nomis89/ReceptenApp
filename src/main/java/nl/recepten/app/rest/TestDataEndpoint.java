@@ -14,6 +14,7 @@ public class TestDataEndpoint {
 	
 	@GetMapping("PushTestData")
 	public void PushTestData() {
-		rs.PushRecipeTestData();
+		rs.pushPastaPesto();
+		rs.pushCrackerMetKaas();
 	}
 }
