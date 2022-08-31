@@ -2,6 +2,8 @@ package nl.recepten.app.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.model.Recept;
@@ -13,16 +15,14 @@ public class ReceptEndpoint {
 	@Autowired
 	ReceptService rs;
 	
-	@GetMapping("Simon")
-	public String endpoint () {
-		System.out.println("we zijn in het endpoint");
-		rs.receptService();
-		return "Hoi dit is zichtbaar ergens";
+	@GetMapping("findAllRecipes")
+	public Iterable<Recept> findAllRecipes() {
+		return rs.findAllRecipes();
 	}
 	
-	@GetMapping("Felix")
-	public Recept endpoint2 () {
-		System.out.println("we zijn in het endpoint");
-		return new Recept();
+	@PostMapping("addRecipe")
+	public void addRecipe(@RequestBody Recept recept) {
+		rs.addRecipe(recept);
 	}
+	
 }
