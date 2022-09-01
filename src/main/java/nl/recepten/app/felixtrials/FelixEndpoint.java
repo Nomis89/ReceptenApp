@@ -15,6 +15,11 @@ public class FelixEndpoint {
 	@Autowired
 	ReceptRepository rr;
 	
+	@PostMapping("demoolc")
+	public void postRecept(@RequestBody Recept recept) {
+		System.out.println(recept.getNaam());
+	}
+	
 	@GetMapping("felix1")
 	public Iterable<Recept> alleRecepten(){
 		return rr.findAll();
