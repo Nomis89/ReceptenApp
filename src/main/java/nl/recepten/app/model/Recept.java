@@ -1,12 +1,20 @@
 package nl.recepten.app.model;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 
 @Entity
 public class Recept {
@@ -14,56 +22,78 @@ public class Recept {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "receptnaam")
-	private String naam;
-	private String omschrijving;
-	private String ingredienten;	
-	private int voorbereidingsTijd;
-	private int bereidingsTijd;
-	private LocalDateTime aanmaakDatum;
+	@Column(name = "recipename")
+	private String name;
+	private String instructions;
+	private int cookingTime;
+	private int totalPortions;
+	
+	@ManyToOne(optional = true)
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	@ElementCollection(targetClass = KitchenAppliance.class)
+	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
+	@Column(name = "KitchenAppliance", nullable = true)
+	@Enumerated(EnumType.STRING)
+	private List<KitchenAppliance> kitchenAppliance;
+
+	public List<KitchenAppliance> getKitchenAppliance() {
+		return kitchenAppliance;
+	}
+	public void setKitchenAppliance(List<KitchenAppliance> kitchenAppliance) {
+		this.kitchenAppliance = kitchenAppliance;
+	}
+	private boolean vegitarian;
+	
+	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recipe")
+	private List<RecipeIngredient> ingredients;
+
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getNaam() {
-		return naam;
+	public List<RecipeIngredient> getIngredients() {
+		return ingredients;
 	}
-	public void setNaam(String naam) {
-		this.naam = naam;
+	public void setIngredients(List<RecipeIngredient> ingredients) {
+		this.ingredients = ingredients;
 	}
-	public String getOmschrijving() {
-		return omschrijving;
+	public String getName() {
+		return name;
 	}
-	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getIngredienten() {
-		return ingredienten;
+	public String getInstructions() {
+		return instructions;
 	}
-	public void setIngredienten(String ingredienten) {
-		this.ingredienten = ingredienten;
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
 	}
-	public int getVoorbereidingsTijd() {
-		return voorbereidingsTijd;
+	public int getCookingTime() {
+		return cookingTime;
 	}
-	public void setVoorbereidingsTijd(int voorbereidingsTijd) {
-		this.voorbereidingsTijd = voorbereidingsTijd;
+	public void setCookingTime(int cookingTime) {
+		this.cookingTime = cookingTime;
 	}
-	public int getBereidingsTijd() {
-		return bereidingsTijd;
+	public int getTotalPortions() {
+		return totalPortions;
 	}
-	public void setBereidingsTijd(int bereidingsTijd) {
-		this.bereidingsTijd = bereidingsTijd;
+	public void setTotalPortions(int totalPortions) {
+		this.totalPortions = totalPortions;
 	}
-	public LocalDateTime getAanmaakTijdstip() {
-		return aanmaakDatum;
+	public boolean isvegitarian() {
+		return vegitarian;
 	}
-	public void setAanmaakTijdstip(LocalDateTime aanmaakTijdstip) {
-		this.aanmaakDatum = aanmaakTijdstip;
+	public void setvegitarian(boolean vegitarian) {
+		this.vegitarian = vegitarian;
 	}
-	
-	
-	
 }

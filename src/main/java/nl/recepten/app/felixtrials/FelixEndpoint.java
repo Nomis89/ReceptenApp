@@ -32,6 +32,6 @@ public class FelixEndpoint {
 	
 	@PostMapping("felix3")
 	public void felix3methoden(@RequestBody Recept recept) {
-		System.out.println(recept.getNaam());
+		System.out.println(recept.getName());
 	}
 }
