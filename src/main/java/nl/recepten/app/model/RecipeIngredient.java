@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class RecipeIngredient {
 	
@@ -22,6 +24,7 @@ public class RecipeIngredient {
 	private double amount;
 	private QuantityType amountType;
 	
+	@JsonIgnore
 	public Recept getRecipe() {
 		return recipe;
 	}
