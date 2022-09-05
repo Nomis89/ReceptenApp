@@ -17,7 +17,7 @@ public class FelixEndpoint {
 	
 	@PostMapping("demoolc")
 	public void postRecept(@RequestBody Recept recept) {
-		System.out.println(recept.getNaam());
+		System.out.println(recept.getName());
 	}
 	
 	@GetMapping("felix1")
