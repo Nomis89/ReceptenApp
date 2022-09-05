@@ -11,6 +11,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,6 +34,7 @@ public class Recept {
 	@ManyToOne(optional = true)
 	private User user;
 	
+	@JsonIgnore
 	public User getUser() {
 		return user;
 	}
