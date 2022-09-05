@@ -36,7 +36,7 @@ public class Stock {
 	private Ingredient ingredientName;
 	
 	private int amount; 
-	private QuantityType amountType; 
+//	private QuantityType amountType; 
 	private Date expirationDate; 
 	private Boolean availableToOthers;
 	
@@ -52,12 +52,12 @@ public class Stock {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public QuantityType getAmountType() {
-		return amountType;
-	}
-	public void setAmountType(QuantityType amountType) {
-		this.amountType = amountType;
-	}
+//	public QuantityType getAmountType() {
+//		return amountType;
+//	}
+//	public void setAmountType(QuantityType amountType) {
+//		this.amountType = amountType;
+//	}
 	public Date getExpirationDate() {
 		return expirationDate;
 	}

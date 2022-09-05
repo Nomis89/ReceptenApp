@@ -37,18 +37,18 @@ public class Recept {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	@ElementCollection(targetClass = KitchenAppliance.class)
-	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "KitchenAppliance", nullable = true)
-	@Enumerated(EnumType.STRING)
-	private List<KitchenAppliance> kitchenAppliance;
+//	@ElementCollection(targetClass = KitchenAppliance.class)
+//	@JoinTable(name = "recipeKitchenAppliance", joinColumns = @JoinColumn(name = "id"))
+//	@Column(name = "KitchenAppliance", nullable = true)
+//	@Enumerated(EnumType.STRING)
+//	private List<KitchenAppliance> kitchenAppliance;
 
-	public List<KitchenAppliance> getKitchenAppliance() {
-		return kitchenAppliance;
-	}
-	public void setKitchenAppliance(List<KitchenAppliance> kitchenAppliance) {
-		this.kitchenAppliance = kitchenAppliance;
-	}
+//	public List<KitchenAppliance> getKitchenAppliance() {
+//		return kitchenAppliance;
+//	}
+//	public void setKitchenAppliance(List<KitchenAppliance> kitchenAppliance) {
+//		this.kitchenAppliance = kitchenAppliance;
+//	}
 	private boolean vegitarian;
 	
 	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recipe")

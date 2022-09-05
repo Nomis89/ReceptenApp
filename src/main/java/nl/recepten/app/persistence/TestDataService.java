@@ -46,6 +46,7 @@ public class TestDataService {
 		RecipeIngredient recipeIngredient1 = new RecipeIngredient();
 		RecipeIngredient recipeIngredient2 = new RecipeIngredient();
 		
+		
 		Recept recipe = new Recept();
 		ArrayList<RecipeIngredient> recipelist = new ArrayList<RecipeIngredient>();
 		ArrayList<KitchenAppliance> kitchenappliances= new ArrayList<KitchenAppliance>();
@@ -80,7 +81,7 @@ public class TestDataService {
 		recipe.setTotalPortions(4);
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
-		recipe.setKitchenAppliance(kitchenappliances);
+//		recipe.setKitchenAppliance(kitchenappliances);
 		recipe.setUser(user);
 		
 		recipe = rr.save(recipe);
@@ -160,14 +161,13 @@ public class TestDataService {
 		ingredient = is.checkExistenceOrCreate("Kracker");
 		
 		stock.setAmount(2);
-		stock.setAmountType(QuantityType.STUK);
+//		stock.setAmountType(QuantityType.STUK);
 		stock.setAvailableToOthers(true);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
 		stock.setIngredientName(ingredient);
 		
-		System.out.println("test1");
-		
+//		System.out.println("test1");
 		
 		ur.save(user);
 		ar.save(account);
@@ -197,7 +197,7 @@ public class TestDataService {
 		ingredient = is.checkExistenceOrCreate("Kaas");
 		
 		stock.setAmount(2);
-		stock.setAmountType(QuantityType.SNEE);
+//		stock.setAmountType(QuantityType.SNEE);
 		stock.setAvailableToOthers(false);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
