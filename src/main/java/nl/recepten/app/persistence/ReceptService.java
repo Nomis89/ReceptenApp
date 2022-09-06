@@ -1,5 +1,8 @@
 package nl.recepten.app.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +28,12 @@ public class ReceptService {
 
 	public void deleteRecipe(long receptid) {
 		 rr.deleteById(receptid);
+	}
+	
+	public List<Recept> getRecipesWithIngredient(String ingredient){
+		
+		
+		return new ArrayList<Recept>();
 	}
 	
 }

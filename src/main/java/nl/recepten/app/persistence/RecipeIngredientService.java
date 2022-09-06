@@ -14,4 +14,9 @@ public class RecipeIngredientService {
 	public Iterable<RecipeIngredient> findAllRecipeIngredients(){
 			return rir.findAll();
 	}
+	
+	public Iterable<RecipeIngredient> findAllRecipeIngredientsContainingIngredient (int ingredientID){
+		
+		return rir.findAll();
+	}
 }

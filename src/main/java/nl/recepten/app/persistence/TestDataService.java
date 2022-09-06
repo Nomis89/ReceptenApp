@@ -92,6 +92,71 @@ public class TestDataService {
 		return recipe;
 	}
 	
+	public Recept pushPastaPestoKaas(User user) {
+		Ingredient ingredient1 = new Ingredient();
+		Ingredient ingredient2 = new Ingredient();
+		Ingredient ingredient3 = new Ingredient();
+		
+		RecipeIngredient recipeIngredient1 = new RecipeIngredient();
+		RecipeIngredient recipeIngredient2 = new RecipeIngredient();
+		RecipeIngredient recipeIngredient3 = new RecipeIngredient();
+		
+		
+		Recept recipe = new Recept();
+		ArrayList<RecipeIngredient> recipelist = new ArrayList<RecipeIngredient>();
+		ArrayList<KitchenAppliance> kitchenappliances= new ArrayList<KitchenAppliance>();
+		
+		ingredient1 = is.checkExistenceOrCreate("Pasta");
+		
+		ingredient2 = is.checkExistenceOrCreate("Pesto");
+		
+		ingredient3 = is.checkExistenceOrCreate("kaas");
+//		System.out.println("ingredienten gemaakt");
+		
+		recipeIngredient1.setIngredient(ingredient1);
+		recipeIngredient1.setAmountType(QuantityType.GRAM);
+		recipeIngredient1.setAmount(240);
+		recipeIngredient1.setRecipe(recipe);
+
+		recipeIngredient2.setIngredient(ingredient2);
+		recipeIngredient2.setAmountType(QuantityType.EETLEPEL);
+		recipeIngredient2.setAmount(4);
+		recipeIngredient2.setRecipe(recipe);
+		
+		recipeIngredient3.setIngredient(ingredient3);
+		recipeIngredient3.setAmountType(QuantityType.GRAM);
+		recipeIngredient3.setAmount(200);
+		recipeIngredient3.setRecipe(recipe);
+		
+//		System.out.println("Alle recipeIngredients gemaakt");
+		
+		recipelist.add(recipeIngredient1);
+		recipelist.add(recipeIngredient2);
+		recipelist.add(recipeIngredient3);
+		
+		kitchenappliances.add(KitchenAppliance.BLENDER);
+		kitchenappliances.add(KitchenAppliance.VIJZEL);
+		
+		recipe.setName("Pasta pesto met kaas");
+		recipe.setInstructions("Kook de pasta volgens de instructies op de verpakking. "
+				+ "Voeg de pesto toe aan de pasta en meng deze."
+				+ "Voeg hierna ook de kaas toe");
+		recipe.setCookingTime(20);
+		recipe.setTotalPortions(4);
+		recipe.setvegitarian(true);
+		recipe.setIngredients(recipelist);
+//		recipe.setKitchenAppliance(kitchenappliances);
+		recipe.setUser(user);
+		
+		recipe = rr.save(recipe);
+		
+		recipeIngredient1 = rir.save(recipeIngredient1);
+		recipeIngredient2 = rir.save(recipeIngredient2);
+		recipeIngredient3 = rir.save(recipeIngredient3);
+//		System.out.println("recept gemaakt");
+		return recipe;
+	}
+	
 	public Recept pushCrackerMetKaas(User user) {
 		
 		Ingredient ingredient1 = new Ingredient();
