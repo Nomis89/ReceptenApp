@@ -37,6 +37,16 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+	    </dependency>
+        <dependency>
+		    <groupId>com.azure</groupId>
+		    <artifactId>azure-identity</artifactId>
+		    <version>1.4.3</version>
+		</dependency>
+        
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
@@ -60,6 +70,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-	</build>>
+	</build>
 
 </project>
