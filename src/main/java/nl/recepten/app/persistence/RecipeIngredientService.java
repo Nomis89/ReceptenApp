@@ -24,7 +24,7 @@ public class RecipeIngredientService {
 	
 	public void setRecipeIngredient(long id, long[] ingredientIdArray) {
 		for(long i : ingredientIdArray) {
-			rir.addRecipeIngredient(id, i);
+//			rir.addRecipeIngredient(id, i);
 		}
 		
 	}

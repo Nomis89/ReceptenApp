@@ -17,8 +17,9 @@ public class RecipeIngredientEndpoint {
 	
 	@GetMapping("GetRecipeIngredient/{id}")
 	public RecipeIngredient EndpointgetRecipeIngredientById(@PathVariable("id")long id) {
-//		System.out.println();
-		int x;
+
+		//System.out.println();
+		//int x;
 		RecipeIngredient recipeIngredient = new RecipeIngredient();
 		return ris.getRecipeIngredientById(id);
 		
