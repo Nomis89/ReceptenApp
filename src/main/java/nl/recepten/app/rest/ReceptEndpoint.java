@@ -23,8 +23,8 @@ public class ReceptEndpoint {
 	}
 	
 	@PostMapping("addRecipe")
-	public void addRecipe(@RequestBody Recept recept) {
-		rs.addRecipe(recept);
+	public long addRecipe(@RequestBody Recept recept) {
+		return rs.addRecipe(recept).getId();
 	}
 	
 	@DeleteMapping("deleteRecipe/{receptid}")

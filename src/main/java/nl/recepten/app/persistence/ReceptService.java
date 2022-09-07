@@ -31,8 +31,9 @@ public class ReceptService {
 		return rr.findAll();
 	}
 
-	public void addRecipe(Recept recept) {
-		rr.save(recept);
+	public Recept addRecipe(Recept recept) {
+		return rr.save(recept);
+		
 	}
 
 	public void deleteRecipe(long receptid) {
