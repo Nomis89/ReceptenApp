@@ -22,6 +22,11 @@ public class UserEndpoint {
 		System.out.println("it works");
 		return gs.giveAllUsers();
 	}
+	@GetMapping("getUser/{id}")
+	public User getUserById(@PathVariable("id")long id){
+		//User user = new User();
+		return gs.getUser(id);
+	}
 	
 	@PostMapping("adduser")
 	public void addUser(@RequestBody User gebruiker) {

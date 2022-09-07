@@ -23,6 +23,12 @@ public class UserService {
 		// TODO Auto-generated method stub
 		g.deleteById(gebruikerid);
 	}
+	public User getUser(long id) {
+		User user = g.findById(id).get();
+		
+		return user;
+		
+	}
 	
 
 }
