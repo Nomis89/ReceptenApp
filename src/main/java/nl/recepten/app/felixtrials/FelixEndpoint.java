@@ -1,5 +1,9 @@
 package nl.recepten.app.felixtrials;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,10 +35,31 @@ public class FelixEndpoint {
 				System.out.println("gevonden");
 				// HIER ik heb m
 				System.out.println("dit is zijn ID"+ a.getId());
-				return a.getId();
+				System.out.println("de userId"+a.getUser().getId());
+				return a.getUser().getId();
 			}
 		}
 		return -1;
+	}
+	@GetMapping("vindReceptenVanAccount/{userId}")
+	public List<Recept> vindAlleRecepten(@PathVariable("userId") int uid) {
+		System.out.println(uid);
+		Iterable<Recept> recepten = rr.findAll();
+		List<Recept> rec = new ArrayList();
+		for(Recept r : recepten) {
+			System.out.println(r);
+			// OF je gebruikt de drie versnellingen van de CRUD
+			// versnelling
+			if(r.getUser() == null) {
+				
+			}else{
+				System.out.println(  r.getUser().getId());
+				if(r.getUser().getId() == uid ) {
+					rec.add(r);
+				}
+			}
+		}
+		return rec;
 	}
 	
 	@PostMapping("demoolc")
