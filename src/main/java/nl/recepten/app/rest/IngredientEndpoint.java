@@ -27,8 +27,8 @@ public class IngredientEndpoint {
 		}
 		
 		@PostMapping("setIngredient/{name}")
-		public Ingredient checkExistenceOrCreate(@PathVariable("name")String ingredient_name) {
-			return is.checkExistenceOrCreate(ingredient_name);
+		public long checkExistenceOrCreate(@PathVariable("name")String ingredient_name) {
+			return is.checkExistenceOrCreate(ingredient_name).getId();
 		}
 
 }

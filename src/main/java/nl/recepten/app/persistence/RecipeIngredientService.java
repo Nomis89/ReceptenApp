@@ -21,4 +21,11 @@ public class RecipeIngredientService {
 		System.out.println(recipeIngredient.getIngredient());
 		return recipeIngredient;
 	}
+	
+	public void setRecipeIngredient(long id, long[] ingredientIdArray) {
+		for(long i : ingredientIdArray) {
+			rir.addRecipeIngredient(id, i);
+		}
+		
+	}
 }
