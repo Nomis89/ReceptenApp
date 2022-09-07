@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.model.Ingredient;
 import nl.recepten.app.model.Recept;
-import nl.recepten.app.model.RecipeIngredient;
 import nl.recepten.app.model.User;
 import nl.recepten.app.persistence.IngredientRepository;
 import nl.recepten.app.persistence.IngredientService;
+import nl.recepten.app.persistence.ReceptService;
 import nl.recepten.app.persistence.RecipeIngredientRepository;
 import nl.recepten.app.persistence.TestDataService;
 
@@ -33,6 +32,9 @@ public class TestDataEndpoint {
 	@Autowired
 	RecipeIngredientRepository rir;
 	
+	@Autowired
+	ReceptService rs;
+	
 	@GetMapping("PushTestData")
 	public void PushTestData() {
 		User user = tds.createRecipeHavingUser();
@@ -42,35 +44,38 @@ public class TestDataEndpoint {
 		Recept recipe3 = tds.pushCrackerMetKaas(user);
 	}
 	
-	@GetMapping("TestFindingAllRecipesByIngredient")
-	public void TestFindingRecipes() {
+	@GetMapping("TestFindingAllRecipesByString")
+	public void TestFindingRecipesWithStrings() {
+		Set<Recept> receptenpercentage;
+		ArrayList<String> ingredients = new ArrayList<String>();
+		ingredients.add("Kaas");
+		ingredients.add("Pesto");
 		PushTestData();
-		String[] ingredients = {"Kaas", "Pesto"};
-		HashMap<Recept, Integer> recipeOccurance = new HashMap<Recept, Integer>();
-		for (String i : ingredients) {
-			Ingredient ingredient = is.checkExistenceOrCreate(i);
-			ArrayList<RecipeIngredient> recipeIngredients = rir.findByingredient(ingredient);
-			for (RecipeIngredient ri : recipeIngredients) {
-				Recept recipe = ri.getRecipe();
-				if (!recipeOccurance.containsKey(recipe)) {
-					recipeOccurance.put(recipe, 1);
-				} else {
-					recipeOccurance.put(recipe, recipeOccurance.get(recipe) + 1);
-				}
-				System.out.println(recipe.getName());
-			}
-		}
-		Set<Recept> recepten = recipeOccurance.keySet();
-		for (Recept r: recepten) {
-			System.out.println("recipe name: " + r.getName() + " occurances: " + Integer.toString(recipeOccurance.get(r)));
-		}
-		HashMap<Recept, Double> recipePercentage = new HashMap<Recept, Double>();
-		for (Recept r: recepten) {
-			recipePercentage.put(r, (double) recipeOccurance.get(r) / r.getIngredients().size());
-		}
-		Set<Recept> receptenpercentage = recipePercentage.keySet();
+		HashMap<Recept, Double> recipePercentage = rs.recipesBasedOnIngredientsAsString(ingredients);
+		
+		receptenpercentage = recipePercentage.keySet();
 		for (Recept r: receptenpercentage) {
-			System.out.println("recipe name: " + r.getName() + " occurances: " + Double.toString(recipePercentage.get(r)));
+			System.out.println("recipe name: " + r.getName() + " - occurances: " + Double.toString(recipePercentage.get(r)));
+		}
+	}
+	
+	@GetMapping("TestFindingAllRecipesByIngredients")
+	public void TestFindingRecipesWithIngredients() {
+		Set<Recept> receptenpercentage;
+		
+		PushTestData();
+		Ingredient ingredient1 = is.checkExistenceOrCreate("Kaas");
+		Ingredient ingredient2 = is.checkExistenceOrCreate("Pesto");
+		
+		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+		ingredients.add(ingredient1);
+		ingredients.add(ingredient2);
+
+		HashMap<Recept, Double> recipePercentage = rs.RecipesBasedOnIngredientsAsIngredients(ingredients);
+		
+		receptenpercentage = recipePercentage.keySet();
+		for (Recept r: receptenpercentage) {
+			System.out.println("recipe name: " + r.getName() + " - occurances: " + Double.toString(recipePercentage.get(r)));
 		}
 	}
 }
