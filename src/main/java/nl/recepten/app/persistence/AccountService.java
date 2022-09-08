@@ -12,12 +12,12 @@ public class AccountService {
 	
 	// Check if it is allowed to create a new account
 	public boolean checkSignUp(Account account) {
-		// If credentials are already use
 		String userName = account.getUserName();
 		String eMail = account.getEmail();	
 		
 		Account accountCandidate = acc.checkAccountInDB(userName, eMail);
 		
+		// If credentials are already use
 		if(accountCandidate == null) {
 			System.out.println("Account is not taken!");
 			return true;
