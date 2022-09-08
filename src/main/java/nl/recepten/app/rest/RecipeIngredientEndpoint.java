@@ -27,7 +27,8 @@ public class RecipeIngredientEndpoint {
 	
 	@PostMapping("SetRecipeIngredient/{recipeId}/{ingredientIdArray}")
 	public void setRecipeIngredient(@PathVariable long recipeId, @PathVariable long[] ingredientIdArray) {
-		
+		System.out.println(recipeId);
+		System.out.println(ingredientIdArray[0]);
 	}
 	
 
