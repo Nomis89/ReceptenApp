@@ -1,11 +1,12 @@
 package nl.recepten.app.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Account {
@@ -13,10 +14,10 @@ public class Account {
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private long id;
 		
-		@OneToOne
+		@JsonIgnore
+		@OneToOne()
 		private User user;
 		
-		@Column(name = "Account")
 		private String userName;
 		private String passWord;
 		private String email;
