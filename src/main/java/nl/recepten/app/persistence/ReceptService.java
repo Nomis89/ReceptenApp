@@ -40,24 +40,15 @@ public class ReceptService {
 	}
 	
 	public HashMap<Recept, Double> RecipesBasedOnIngredientsAsIngredients(ArrayList<Ingredient> ingredients){
-		ArrayList<String> ingredientsAsString = new ArrayList<String>();
-		for (Ingredient i : ingredients) {
-			ingredientsAsString.add(i.getName());
-		}
-		return recipesBasedOnIngredientsAsString(ingredientsAsString);
-	}
-	
-	public HashMap<Recept, Double> recipesBasedOnIngredientsAsString(ArrayList<String> ingredients){
-		Ingredient ingredient;
+		
 		Recept recipe;
 		ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<RecipeIngredient>();
 		HashMap<Recept, Integer> recipeOccurance = new HashMap<Recept, Integer>();
 		Set<Recept> recepten;
 		HashMap<Recept, Double> recipePercentage = new HashMap<Recept, Double>();
 		
-		for (String i : ingredients) {
-			ingredient = is.checkExistenceOrCreate(i);
-			recipeIngredients = rir.findByingredient(ingredient);
+		for (Ingredient i : ingredients) {
+			recipeIngredients = rir.findByingredient(i);
 			for (RecipeIngredient ri : recipeIngredients) {
 				recipe = ri.getRecipe();
 				if (!recipeOccurance.containsKey(recipe)) {
@@ -78,5 +69,14 @@ public class ReceptService {
 			recipePercentage.put(r, (double) recipeOccurance.get(r) / r.getIngredients().size());
 		}
 		return recipePercentage;
+	}
+	
+	public HashMap<Recept, Double> recipesBasedOnIngredientsAsString(ArrayList<String> ingredients){
+		
+		ArrayList<Ingredient> ingredientAsList = new ArrayList<Ingredient>();
+		for (String i : ingredients) {
+			ingredientAsList.add(is.checkExistenceOrCreate(i));
+		}
+		return RecipesBasedOnIngredientsAsIngredients(ingredientAsList);
 	}
 }
