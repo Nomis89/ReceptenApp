@@ -1,10 +1,9 @@
 package nl.recepten.app.rest;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.model.Ingredient;
@@ -18,19 +17,18 @@ public class IngredientEndpoint {
 		
 		@GetMapping("returnIngredients")
 		public  Iterable<Ingredient> returnIngredients() {
-			System.out.println("returnIngredients");
 			return is.giveAllIngredients();
 		}
 		
 		@GetMapping("getIngredient/{id}")
 		public Ingredient getIngredientById(@PathVariable("id")long id) {
-			System.out.println("Hij doet het W");
-			int x;
-			Ingredient ingredient = new Ingredient();
-//			ingredient.setId(28);
 			return is.serviceGetIngredientById(id);
-//			return ingredient;
+
 		}
 		
+		@PostMapping("setIngredient/{name}")
+		public long checkExistenceOrCreate(@PathVariable("name")String ingredient_name) {
+			return is.checkExistenceOrCreate(ingredient_name).getId();
+		}
 
 }

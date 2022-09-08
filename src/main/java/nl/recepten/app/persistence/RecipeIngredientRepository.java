@@ -9,4 +9,5 @@ import nl.recepten.app.model.RecipeIngredient;
 
 public interface RecipeIngredientRepository extends CrudRepository <RecipeIngredient, Long>{
 	ArrayList<RecipeIngredient> findByingredient(Ingredient ingredient);
+	
 }
