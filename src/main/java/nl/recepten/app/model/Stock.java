@@ -1,15 +1,15 @@
 package nl.recepten.app.model;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-	
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Stock {
 	
@@ -17,6 +17,7 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@JsonIgnore
 	@ManyToOne
 	private User user;
 	
@@ -26,14 +27,16 @@ public class Stock {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Ingredient getIngredientName() {
-		return ingredientName;
-	}
-	public void setIngredientName(Ingredient ingredientName) {
-		this.ingredientName = ingredientName;
-	}
+	
 	@ManyToOne
-	private Ingredient ingredientName;
+	private Ingredient ingredient;
+	
+	public Ingredient getIngredient() {
+		return ingredient;
+	}
+	public void setIngredient(Ingredient ingredient) {
+		this.ingredient = ingredient;
+	}
 	
 	private int amount; 
 	private QuantityType amountType; 
