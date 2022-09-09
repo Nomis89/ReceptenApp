@@ -66,7 +66,7 @@ public class TestDataService {
 		recipeIngredient2.setAmount(4);
 		recipeIngredient2.setRecipe(recipe);
 		
-//		System.out.println("Alle recipeIngredients gemaakt");
+		System.out.println("Alle recipeIngredients gemaakt");
 		
 		recipelist.add(recipeIngredient1);
 		recipelist.add(recipeIngredient2);

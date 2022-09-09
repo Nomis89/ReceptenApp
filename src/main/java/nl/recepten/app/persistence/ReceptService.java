@@ -49,7 +49,7 @@ public class ReceptService {
 		HashMap<Recept, Double> recipePercentage = new HashMap<Recept, Double>();
 		
 		for (Ingredient i : ingredients) {
-			recipeIngredients = rir.findByingredient(i);
+			recipeIngredients = rir.findByIngredient(i);
 			for (RecipeIngredient ri : recipeIngredients) {
 				recipe = ri.getRecipe();
 				if (!recipeOccurance.containsKey(recipe)) {

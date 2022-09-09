@@ -1,10 +1,13 @@
 package nl.recepten.app.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,29 +18,43 @@ public class RecipeIngredient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne(optional = false)
-	private Recept recipe;
-	
+	@ManyToOne
+	private Recept recept;
+
+	public Recept getRecept() {
+		return recept;
+	}
+	public void setRecept(Recept recept) {
+		this.recept = recept;
+	}
 	@ManyToOne
 	private Ingredient ingredient;
 	
 	private double amount;
 	private QuantityType amountType;
 	
-	@JsonIgnore
+	@JsonIgnore 
 	public Recept getRecipe() {
-		return recipe;
+		return recept;
 	}
-	public void setRecipe(Recept recipe) {
-		this.recipe = recipe;
+	public void setRecipe(Recept recept) {
+		this.recept = recept;
 	}
 	// COMMENT: Staan uit omdat ze ingredient gebruiken.
 	// Nieuwe getters en setters moeten gemaakt worden als de long als oplossing blijft bestaan.
+
+
 	public Ingredient getIngredient() {
 		return ingredient;
 	}
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public double getAmount() {
 		return amount;
@@ -51,5 +68,5 @@ public class RecipeIngredient {
 	public void setAmountType(QuantityType amountType) {
 		this.amountType = amountType;
 	}
-	
+
 }
