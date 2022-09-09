@@ -1,7 +1,6 @@
 package nl.recepten.app.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;

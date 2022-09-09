@@ -2,14 +2,13 @@ package nl.recepten.app.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -17,16 +16,34 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@OneToOne(mappedBy = "user", orphanRemoval = true)
+	private Account account;
 	
-	@Column(name = "User")
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 	private String name;
-	private String Description;
+	private String description;
 	private String cityName;
 	private String streetName;
 	private int houseNumber;
 	private String houseNumberAddition;
 	private String zipCode;
 	
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "user")
+	private List<Stock> stocks;
+	
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "user")
 	private List<Recept> recepten;
 	
@@ -49,10 +66,10 @@ public class User {
 		this.name = name;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public String getCityName() {
 		return cityName;
