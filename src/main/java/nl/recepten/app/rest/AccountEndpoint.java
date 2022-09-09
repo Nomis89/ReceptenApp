@@ -38,7 +38,7 @@ public class AccountEndpoint {
 			// Create the new account
 			as.createAccount(account);
 			
-			System.out.println(account.getUser().getId());
+			System.out.println(account.getId());
 			
 			System.out.println("Account created!");
 			
