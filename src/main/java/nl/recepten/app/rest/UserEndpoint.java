@@ -38,9 +38,13 @@ public class UserEndpoint {
 	}
 	
 	@PutMapping("updateUser/{id}")
-	public void updateUserById(@PathVariable("accountid")long accountId, @RequestBody User user) {
+	public void updateUserById(@PathVariable("id")long accountId, @RequestBody User user) {
 		Account loggedInAccount = as.accountSession(accountId);
 		User loggedInUser = loggedInAccount.getUser();
+		System.out.println(user.getCityName());
+		System.out.println(user.getDescription());
+		System.out.println(user.getHouseNumber());
+		
 		loggedInUser.setCityName(user.getCityName());
 		loggedInUser.setDescription(user.getDescription());
 		loggedInUser.setStreetName(user.getStreetName());
@@ -49,6 +53,8 @@ public class UserEndpoint {
 		loggedInUser.setZipCode(user.getZipCode());
 		loggedInUser.setHouseNumber(user.getHouseNumber());
 		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition());
+		
+		gs.saveUser(loggedInUser);
 	}
 	@PostMapping("adduser")
 	public void addUser(@RequestBody User gebruiker) {
