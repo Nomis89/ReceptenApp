@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import nl.recepten.app.model.Ingredient;
 import nl.recepten.app.model.Recept;
 import nl.recepten.app.model.RecipeIngredient;
+import nl.recepten.app.model.User;
 
 @Service
 public class ReceptService {
@@ -25,6 +26,12 @@ public class ReceptService {
 	public void receptService() {
 		System.out.println("We zitten in de service");
 		rr.save(new Recept());
+	}
+	public Recept getRecept(long id) {
+		Recept recept = rr.findById(id).get();
+		
+		return recept;
+		
 	}
 	
 	public Iterable<Recept> findAllRecipes() {

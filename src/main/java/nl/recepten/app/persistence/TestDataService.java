@@ -230,7 +230,7 @@ public class TestDataService {
 		stock.setAvailableToOthers(true);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
-		stock.setIngredientName(ingredient);
+		stock.setIngredient(ingredient);
 		
 //		System.out.println("test1");
 		
@@ -266,7 +266,7 @@ public class TestDataService {
 		stock.setAvailableToOthers(false);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
-		stock.setIngredientName(ingredient);
+		stock.setIngredient(ingredient);
 		
 		System.out.println("test1");
 		

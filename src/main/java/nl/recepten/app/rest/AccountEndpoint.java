@@ -32,13 +32,13 @@ public class AccountEndpoint {
 			User emptyUser = new User();
 			us.saveUser(emptyUser);
 			
-			// Create the new account
-			as.createAccount(account);
-			
 			// Set OneToOne with user profile
 			account.setUser(emptyUser);
 			
-			System.out.println(account.getUser().getId());
+			// Create the new account
+			as.createAccount(account);
+			
+			System.out.println(account.getId());
 			
 			System.out.println("Account created!");
 			
