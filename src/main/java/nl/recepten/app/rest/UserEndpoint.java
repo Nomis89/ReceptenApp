@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +37,19 @@ public class UserEndpoint {
 		return loggedInUser;
 	}
 	
+	@PutMapping("updateUser/{id}")
+	public void updateUserById(@PathVariable("accountid")long accountId, @RequestBody User user) {
+		Account loggedInAccount = as.accountSession(accountId);
+		User loggedInUser = loggedInAccount.getUser();
+		loggedInUser.setCityName(user.getCityName());
+		loggedInUser.setDescription(user.getDescription());
+		loggedInUser.setStreetName(user.getStreetName());
+		loggedInUser.setName(user.getName());
+		loggedInUser.setCityName(user.getCityName());
+		loggedInUser.setZipCode(user.getZipCode());
+		loggedInUser.setHouseNumber(user.getHouseNumber());
+		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition());
+	}
 	@PostMapping("adduser")
 	public void addUser(@RequestBody User gebruiker) {
 		System.out.println(gebruiker.getName());
