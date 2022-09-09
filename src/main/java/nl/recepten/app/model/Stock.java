@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Stock {
 	
@@ -15,6 +17,7 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@JsonIgnore
 	@ManyToOne
 	private User user;
 	

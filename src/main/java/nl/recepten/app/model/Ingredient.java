@@ -10,12 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Ingredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "ingredient")
 	private List<NutrionalValue> nutrionalValues;
 	
@@ -27,6 +30,7 @@ public class Ingredient {
 		this.nutrionalValues = nutrionalValues;
 	}
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "ingredient")
 	private List<Stock> stocks;
 	
