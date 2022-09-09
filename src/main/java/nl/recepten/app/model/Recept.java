@@ -34,6 +34,8 @@ public class Recept {
 	@ManyToOne(optional = true)
 	private User user;
 	
+	
+	
 	@JsonIgnore
 	public User getUser() {
 		return user;
@@ -55,7 +57,7 @@ public class Recept {
 	}
 	private boolean vegitarian;
 	
-	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recipe")
+	@OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "recept")
 	private List<RecipeIngredient> ingredients;
 
 	public long getId() {
