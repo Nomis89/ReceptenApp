@@ -226,7 +226,7 @@ public class TestDataService {
 		ingredient = is.checkExistenceOrCreate("Kracker");
 		
 		stock.setAmount(2);
-//		stock.setAmountType(QuantityType.STUK);
+		stock.setAmountType(QuantityType.STUK);
 		stock.setAvailableToOthers(true);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
@@ -262,7 +262,7 @@ public class TestDataService {
 		ingredient = is.checkExistenceOrCreate("Kaas");
 		
 		stock.setAmount(2);
-//		stock.setAmountType(QuantityType.SNEE);
+		stock.setAmountType(QuantityType.SNEE);
 		stock.setAvailableToOthers(false);
 		stock.setExpirationDate(new Date(56446556));
 		stock.setUser(user);
