@@ -1,10 +1,13 @@
 package nl.recepten.app.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import nl.recepten.app.model.Account;
 import nl.recepten.app.model.User;
 import nl.recepten.app.persistence.AccountService;
@@ -36,6 +39,10 @@ public class AccountEndpoint {
 			account.setUser(emptyUser);
 			
 			// Create the new account
+			String password = account.getPassWord();
+			String pwHash = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+			account.setPassWord(pwHash);
+			
 			as.createAccount(account);
 			
 			System.out.println(account.getId());
@@ -70,6 +77,12 @@ public class AccountEndpoint {
 		Account loggedInAccount = as.accountSession(account.getId());
 		
 		return loggedInAccount;
+	}
+	
+	@DeleteMapping("/deleteAccount/{id}")
+	public void deleteAccount(@PathVariable("id")long accountId) {
+		Account loggedInAccount = as.accountSession(accountId);
+		as.delAccount(loggedInAccount);
 	}
 	
 }
