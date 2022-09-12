@@ -44,7 +44,6 @@ public class StockEndpoint {
 		System.out.println(account.getEmail());
 		System.out.println(account.getUser().getName());
 		Iterable<Stock> stockItems =  stockrepository.findByuser(account.getUser());
-		System.out.println("werkt");
 		for (Stock s : stockItems) {
 			System.out.println(s.getIngredient().getName());
 		}
