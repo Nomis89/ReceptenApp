@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import nl.recepten.app.model.Account;
 import nl.recepten.app.model.Stock;
 import nl.recepten.app.persistence.AccountService;
+import nl.recepten.app.persistence.IngredientService;
 import nl.recepten.app.persistence.StockRepository;
 import nl.recepten.app.persistence.StockService;
 
@@ -25,16 +26,27 @@ public class StockEndpoint {
 	@Autowired
 	AccountService as;
 	
+	@Autowired
+	IngredientService is;
+	
 	@GetMapping("/allstock")
 	public Iterable<Stock> allStock(){
 		return stockservice.allStock();
-
 	}
 	
 	@PostMapping("/stock")
 	public void addStock(@RequestBody Stock stock) {
 		stockservice.saveStock(stock);
-
+	}
+	
+	@PostMapping("/addStock/{id}/{ingredientName}")
+	public void addStockWithAccountID(@RequestBody Stock stock, @PathVariable("id") long id, @PathVariable("ingredientName") String ingredientName) {
+		System.out.println("Ingredient name is: " + ingredientName);
+		
+		Account account = as.accountSession(id);
+		stock.setUser(account.getUser());
+		stock.setIngredient(is.checkExistenceOrCreate(ingredientName));
+		stockservice.saveStock(stock);
 	}
 	
 	@GetMapping("/stockFromAccount/{id}")
