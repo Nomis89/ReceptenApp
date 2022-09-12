@@ -3,13 +3,21 @@ package nl.recepten.app.persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import nl.recepten.app.model.Ingredient;
+import nl.recepten.app.model.Recept;
 import nl.recepten.app.model.RecipeIngredient;
 
 @Service
 public class RecipeIngredientService {
 	
 	@Autowired
-	RecipeIngredientRepository rir;
+	private RecipeIngredientRepository rir;
+	
+	@Autowired
+	private IngredientRepository ir;
+	
+	@Autowired
+	private ReceptRepository rr;
 	
 	public Iterable<RecipeIngredient> findAllRecipeIngredients(){
 			return rir.findAll();
@@ -22,10 +30,10 @@ public class RecipeIngredientService {
 		return recipeIngredient;
 	}
 	
-	public void setRecipeIngredient(long id, long[] ingredientIdArray) {
-		for(long i : ingredientIdArray) {
-//			rir.addRecipeIngredient(id, i);
-		}
+	public void addRecipeIngredient(RecipeIngredient recipe_ingredient, long recipeId, 
+			long ingredientId) {
+		rir.save(recipe_ingredient);
 		
 	}
-}
+}		
+

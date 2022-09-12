@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.model.Recept;
+import nl.recepten.app.model.User;
 import nl.recepten.app.persistence.ReceptService;
 
 @RestController
@@ -21,7 +22,11 @@ public class ReceptEndpoint {
 	public Iterable<Recept> findAllRecipes() {
 		return rs.findAllRecipes();
 	}
-	
+	@GetMapping("getRecipe/{id}")
+	public Recept getReceptById(@PathVariable("id")long id){
+		//User user = new User();
+		return rs.getRecept(id);
+	}
 	@PostMapping("addRecipe")
 	public long addRecipe(@RequestBody Recept recept) {
 		return rs.addRecipe(recept).getId();
