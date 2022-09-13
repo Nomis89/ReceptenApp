@@ -31,7 +31,6 @@ public class RecipeIngredientService {
 	}
 	
 	public Iterable<RecipeIngredient> getIngredientsByRecipeId(long recipeId) {
-		System.out.println("Doe jij het wel??");
 		Recept recept = rr.findById(recipeId).get();
 		Iterable<RecipeIngredient> ingredients = rir.findByrecept(recept);
 		return ingredients;
