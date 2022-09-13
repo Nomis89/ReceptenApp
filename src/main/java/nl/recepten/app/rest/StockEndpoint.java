@@ -39,6 +39,12 @@ public class StockEndpoint {
 		stockservice.saveStock(stock);
 	}
 	
+	@GetMapping("/deleteStock/{id}")
+	public void deleteStock (@PathVariable("id") long id) {
+		System.out.println("Stock with the following id will be deleted: " + id);
+		stockrepository.deleteById(id);
+	}
+	
 	@PostMapping("/addStock/{id}/{ingredientName}")
 	public void addStockWithAccountID(@RequestBody Stock stock, @PathVariable("id") long id, @PathVariable("ingredientName") String ingredientName) {
 		System.out.println("Ingredient name is: " + ingredientName);
@@ -60,5 +66,10 @@ public class StockEndpoint {
 			System.out.println(s.getIngredient().getName());
 		}
 		return stockItems;
+	}
+	
+	@GetMapping("/stockFromID/{id}")
+	public Stock getStockbyID(@PathVariable("id") long id) {
+		return stockrepository.findById(id).get();
 	}
 }
