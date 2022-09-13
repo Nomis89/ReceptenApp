@@ -1,8 +1,5 @@
 package nl.recepten.app.rest;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,16 +30,12 @@ public class RecipeIngredientEndpoint {
 	@Autowired
 	IngredientRepository ir;
 	
-//	@GetMapping("GetRecipeIngredient/{id}")
-//	public RecipeIngredient EndpointgetRecipeIngredientById(@PathVariable("id")long id) {
-//
-//		//System.out.println();
-//		//int x;
-//		RecipeIngredient recipeIngredient = new RecipeIngredient();
-//		return ris.getRecipeIngredientById(id);
-//		
-//	}
-//	
+	@GetMapping("GetRecipeIngredient/{id}")
+	public Iterable<RecipeIngredient> EndpointgetRecipeIngredientById(@PathVariable("id")long id) {
+		return ris.getIngredientsByRecipeId(id);
+		
+	}
+	
 	@PostMapping("SetRecipeIngredient/{recipeId}/{ingredientId}")
 	public void addRecipeIngredient(@RequestBody RecipeIngredient recipe_ingredient, 
 			@PathVariable long recipeId, @PathVariable long ingredientId) {
@@ -56,4 +49,4 @@ public class RecipeIngredientEndpoint {
 		rir.save(recipe_ingredient);
 		
 	}
-	}
+}
