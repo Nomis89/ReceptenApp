@@ -11,5 +11,6 @@ import nl.recepten.app.model.RecipeIngredient;
 public interface RecipeIngredientRepository extends CrudRepository 
 		<RecipeIngredient, Long>{
 	ArrayList<RecipeIngredient> findByIngredient(Ingredient ingredient);
+	Iterable<RecipeIngredient> findByrecept(Recept recipe);
 
 }

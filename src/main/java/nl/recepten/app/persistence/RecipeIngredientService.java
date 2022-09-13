@@ -30,6 +30,13 @@ public class RecipeIngredientService {
 		return recipeIngredient;
 	}
 	
+	public Iterable<RecipeIngredient> getIngredientsByRecipeId(long recipeId) {
+		System.out.println("Doe jij het wel??");
+		Recept recept = rr.findById(recipeId).get();
+		Iterable<RecipeIngredient> ingredients = rir.findByrecept(recept);
+		return ingredients;
+	}
+	
 	public void addRecipeIngredient(RecipeIngredient recipe_ingredient, long recipeId, 
 			long ingredientId) {
 		rir.save(recipe_ingredient);
