@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import nl.recepten.app.model.Account;
 import nl.recepten.app.model.Ingredient;
 import nl.recepten.app.model.KitchenAppliance;
@@ -219,7 +220,7 @@ public class TestDataService {
 		user.setZipCode("1111AA");
 		
 		account.setUser(user);
-		account.setPassWord("wachtwoord123");
+		account.setPassWord(BCrypt.withDefaults().hashToString(12, "wachtwoord123".toCharArray()));
 		account.setUserName("Jan123");
 		account.setEmail("jan@jansen.nl");
 		
@@ -255,7 +256,7 @@ public class TestDataService {
 		user.setZipCode("2222BB");
 		
 		account.setUser(user);
-		account.setPassWord("wachtwoord123");
+		account.setPassWord(BCrypt.withDefaults().hashToString(12, "wachtwoord123".toCharArray()));
 		account.setUserName("Sjon123");
 		account.setEmail("Sjon@schaap.nl");
 		
