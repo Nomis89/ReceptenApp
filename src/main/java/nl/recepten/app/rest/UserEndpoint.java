@@ -41,19 +41,15 @@ public class UserEndpoint {
 	public void updateUserById(@PathVariable("id")long accountId, @RequestBody User user) {
 		Account loggedInAccount = as.accountSession(accountId);
 		User loggedInUser = loggedInAccount.getUser();
-		System.out.println(user.getCityName());
-		System.out.println(user.getDescription());
-		System.out.println(user.getHouseNumber());
 		
-		loggedInUser.setCityName(user.getCityName());
-		loggedInUser.setDescription(user.getDescription());
-		loggedInUser.setStreetName(user.getStreetName());
-		loggedInUser.setName(user.getName());
-		loggedInUser.setCityName(user.getCityName());
-		loggedInUser.setZipCode(user.getZipCode());
-		loggedInUser.setHouseNumber(user.getHouseNumber());
-		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition());
-		
+		loggedInUser.setName(user.getName().equals("") ? loggedInUser.getName(): user.getName());
+		loggedInUser.setDescription(user.getDescription().equals("") ? loggedInUser.getDescription(): user.getDescription());
+		loggedInUser.setCityName(user.getCityName().equals("") ? loggedInUser.getCityName(): user.getCityName());
+		loggedInUser.setStreetName(user.getStreetName().equals("") ? loggedInUser.getStreetName(): user.getStreetName());
+		loggedInUser.setHouseNumber(user.getHouseNumber() == 0 ? loggedInUser.getHouseNumber(): user.getHouseNumber());
+		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition().equals("") ? loggedInUser.getHouseNumberAddition(): user.getHouseNumberAddition());
+		loggedInUser.setZipCode(user.getZipCode().equals("") ? loggedInUser.getZipCode(): user.getZipCode());
+
 		gs.saveUser(loggedInUser);
 	}
 	@PostMapping("adduser")

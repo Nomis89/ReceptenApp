@@ -1,5 +1,6 @@
 package nl.recepten.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Account {
 		private long id;
 		
 		@JsonIgnore
-		@OneToOne()
+		@OneToOne(cascade=CascadeType.REMOVE)
 		private User user;
 		
 		private String userName;
