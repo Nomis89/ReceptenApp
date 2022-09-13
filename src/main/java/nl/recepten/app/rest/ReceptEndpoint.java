@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.recepten.app.model.Account;
 import nl.recepten.app.model.Recept;
 import nl.recepten.app.model.User;
+import nl.recepten.app.persistence.AccountService;
 import nl.recepten.app.persistence.ReceptService;
 
 @RestController
@@ -17,6 +19,9 @@ public class ReceptEndpoint {
 	
 	@Autowired
 	ReceptService rs;
+	
+	@Autowired
+	AccountService as;
 	
 	@GetMapping("findAllRecipes")
 	public Iterable<Recept> findAllRecipes() {
@@ -27,9 +32,13 @@ public class ReceptEndpoint {
 		//User user = new User();
 		return rs.getRecept(id);
 	}
-	@PostMapping("addRecipe")
-	public long addRecipe(@RequestBody Recept recept) {
-		return rs.addRecipe(recept).getId();
+	@PostMapping("addRecipe/{accountId}")
+	public long addRecipe(@RequestBody Recept recept, @PathVariable("accountId") long id) {
+		Account account = as.accountSession(id);
+		User user = account.getUser();
+		recept.setUser(user);
+		rs.addRecipe(recept);
+		return recept.getId();
 	}
 	
 	@DeleteMapping("deleteRecipe/{receptid}")
