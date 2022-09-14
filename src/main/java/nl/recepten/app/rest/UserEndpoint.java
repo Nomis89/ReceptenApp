@@ -47,7 +47,7 @@ public class UserEndpoint {
 		loggedInUser.setCityName(user.getCityName().equals("") ? loggedInUser.getCityName(): user.getCityName());
 		loggedInUser.setStreetName(user.getStreetName().equals("") ? loggedInUser.getStreetName(): user.getStreetName());
 		loggedInUser.setHouseNumber(user.getHouseNumber() == 0 ? loggedInUser.getHouseNumber(): user.getHouseNumber());
-		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition().equals("") ? loggedInUser.getHouseNumberAddition(): user.getHouseNumberAddition());
+		loggedInUser.setHouseNumberAddition(user.getHouseNumberAddition());
 		loggedInUser.setZipCode(user.getZipCode().equals("") ? loggedInUser.getZipCode(): user.getZipCode());
 
 		gs.saveUser(loggedInUser);
