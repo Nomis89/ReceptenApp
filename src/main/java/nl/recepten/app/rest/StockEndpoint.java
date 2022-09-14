@@ -57,10 +57,7 @@ public class StockEndpoint {
 	
 	@GetMapping("/stockFromAccount/{id}")
 	public Iterable<Stock> stockFromAccount (@PathVariable("id") long id){
-		
 		Account account = as.accountSession(id);
-		System.out.println(account.getEmail());
-		System.out.println(account.getUser().getName());
 		Iterable<Stock> stockItems =  stockrepository.findByuser(account.getUser());
 		for (Stock s : stockItems) {
 			System.out.println(s.getIngredient().getName());
