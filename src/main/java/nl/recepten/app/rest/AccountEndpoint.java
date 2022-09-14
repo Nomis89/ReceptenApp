@@ -33,6 +33,13 @@ public class AccountEndpoint {
 		} else {
 			// Create empty user profile for the newly created account
 			User emptyUser = new User();
+			// Let all fields be empty strings
+			emptyUser.setName("");
+			emptyUser.setDescription("");
+			emptyUser.setCityName("");
+			emptyUser.setStreetName("");
+			emptyUser.setHouseNumberAddition("");
+			emptyUser.setZipCode("");
 			us.saveUser(emptyUser);
 			
 			// Set OneToOne with user profile
