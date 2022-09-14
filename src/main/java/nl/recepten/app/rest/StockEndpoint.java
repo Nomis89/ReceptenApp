@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,12 +56,29 @@ public class StockEndpoint {
 		stockservice.saveStock(stock);
 	}
 	
+	@PutMapping("/changeStock/{ingredientName}")
+	public void changeStockWithAccountID(@RequestBody Stock newStock, @PathVariable("ingredientName") String ingredientName) {
+		System.out.println("Ingredient name is: " + ingredientName);
+		
+		Stock stock = stockrepository.findById(newStock.getId()).get();
+		stock.setIngredient(is.checkExistenceOrCreate(ingredientName));
+		stock.setAmount(newStock.getAmount());
+		stock.setAmountType(newStock.getAmountType());
+		stock.setAvailableToOthers(newStock.getAvailableToOthers());
+		stock.setExpirationDate(newStock.getExpirationDate());
+				
+//		Account account = as.accountSession(id);
+//		stock.setUser(account.getUser());
+//		
+		stockservice.saveStock(stock);
+	}
+	
 	@GetMapping("/stockFromAccount/{id}")
 	public Iterable<Stock> stockFromAccount (@PathVariable("id") long id){
 		
 		Account account = as.accountSession(id);
-		System.out.println(account.getEmail());
-		System.out.println(account.getUser().getName());
+//		System.out.println(account.getEmail());
+//		System.out.println(account.getUser().getName());
 		Iterable<Stock> stockItems =  stockrepository.findByuser(account.getUser());
 		for (Stock s : stockItems) {
 			System.out.println(s.getIngredient().getName());
