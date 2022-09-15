@@ -87,4 +87,15 @@ public class ReceptService {
 		}
 		return RecipesBasedOnIngredientsAsIngredients(ingredientAsList);
 	}
+	
+	public Recept updateRecipe(Recept recept) {
+		Recept recept2 = rr.findById(recept.getId()).get();
+		recept2.setName(recept.getName());
+		recept2.setInstructions(recept.getInstructions());
+		recept2.setCookingTime(recept.getCookingTime());
+		recept2.setTotalPortions(recept.getTotalPortions());
+		rr.save(recept2);
+		return recept2;
+	}
+
 }
