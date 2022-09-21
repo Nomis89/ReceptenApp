@@ -82,6 +82,7 @@ public class TestDataService {
 		recipe.setTotalPortions(4);
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
+		recipe.setImage("");
 //		recipe.setKitchenAppliance(kitchenappliances);
 		recipe.setUser(user);
 		
@@ -146,6 +147,7 @@ public class TestDataService {
 		recipe.setTotalPortions(4);
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
+		recipe.setImage("");
 //		recipe.setKitchenAppliance(kitchenappliances);
 		recipe.setUser(user);
 		
@@ -195,6 +197,7 @@ public class TestDataService {
 		recipe.setTotalPortions(1);
 		recipe.setvegitarian(true);
 		recipe.setIngredients(recipelist);
+		recipe.setImage("");
 		recipe.setUser(user);
 		
 		recipe = rr.save(recipe);
