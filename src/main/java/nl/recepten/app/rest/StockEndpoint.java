@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.recepten.app.model.Account;
+import nl.recepten.app.model.Recept;
 import nl.recepten.app.model.Stock;
 import nl.recepten.app.persistence.AccountService;
 import nl.recepten.app.persistence.IngredientService;
+import nl.recepten.app.persistence.ReceptService;
 import nl.recepten.app.persistence.StockRepository;
 import nl.recepten.app.persistence.StockService;
 
@@ -26,6 +28,9 @@ public class StockEndpoint {
 	
 	@Autowired
 	AccountService as;
+	
+	@Autowired
+	ReceptService rs;
 	
 	@Autowired
 	IngredientService is;
@@ -90,4 +95,5 @@ public class StockEndpoint {
 	public Stock getStockbyID(@PathVariable("id") long id) {
 		return stockrepository.findById(id).get();
 	}
+	
 }

@@ -40,9 +40,6 @@ public class RecipeIngredient {
 	public void setRecipe(Recept recept) {
 		this.recept = recept;
 	}
-	// COMMENT: Staan uit omdat ze ingredient gebruiken.
-	// Nieuwe getters en setters moeten gemaakt worden als de long als oplossing blijft bestaan.
-
 
 	public Ingredient getIngredient() {
 		return ingredient;

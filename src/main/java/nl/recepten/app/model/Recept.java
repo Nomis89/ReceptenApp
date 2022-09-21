@@ -30,7 +30,22 @@ public class Recept {
 	private String instructions;
 	private int cookingTime;
 	private int totalPortions;
+	@Column(name = "image", unique = false, nullable = false, length = 100000)
+	private String image;
+	private KitchenAppliance benodigdHeden;
 	
+	public KitchenAppliance getBenodigdHeden() {
+		return benodigdHeden;
+	}
+	public void setBenodigdHeden(KitchenAppliance benodigdHeden) {
+		this.benodigdHeden = benodigdHeden;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	@ManyToOne(optional = true)
 	private User user;
 	
