@@ -28,6 +28,7 @@ public class ReceptEndpoint {
 	public Iterable<Recept> findAllRecipes() {
 		return rs.findAllRecipes();
 	}
+	
 	@GetMapping("getRecipe/{id}")
 	public Recept getReceptById(@PathVariable("id")long id){
 		//User user = new User();
@@ -38,6 +39,7 @@ public class ReceptEndpoint {
 		Account account = as.accountSession(id);
 		User user = account.getUser();
 		recept.setUser(user);
+		System.out.println(recept.getImage());
 		rs.addRecipe(recept);
 		return recept.getId();
 	}
